@@ -8,8 +8,10 @@ use core::ffi::CStr;
 
 use alloc::string::String;
 use alloc::vec;
+use alloc::vec::Vec;
 use rust_profanos::libs::std::env;
 use rust_profanos::libs::std::io::Read;
+use rust_profanos::libs::vesa;
 use rust_profanos::libs as libs;
 use rust_profanos::println;
 use rust_profanos::utilities as utilities;
@@ -50,6 +52,21 @@ pub extern "C" fn main() {
     } else {
         println!("4");
     }
+
+    let mut x_coords = Vec::new();
+    let mut y_coords = Vec::new();
+    let mut colors = Vec::new();
+
+    for x in 0..100 {
+        for y in 0..100 {
+            x_coords.push(x);
+            y_coords.push(y);
+            colors.push(0xFF0000); // Red color
+        }
+    }
+
+    // Call set_pixels with the prepared vectors
+    vesa::set_pixels(x_coords, y_coords, colors);
 
     println!("End of function");
 }
