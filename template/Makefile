@@ -19,4 +19,7 @@ build:
 
 clean:
 	rm -f -Rf build
+
+fclean:
+	rm -f -Rf build
 	rm -f -Rf target
